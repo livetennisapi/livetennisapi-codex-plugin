@@ -1,0 +1,38 @@
+{
+  "name": "livetennisapi",
+  "version": "1.0.0",
+  "description": "Live tennis scores, fixtures, players, results, odds and model analysis from the Live Tennis API, exposed as 12 read-only MCP tools.",
+  "author": {
+    "name": "Live Tennis API",
+    "url": "https://livetennisapi.com/"
+  },
+  "homepage": "https://livetennisapi.com/",
+  "repository": "https://github.com/livetennisapi/livetennisapi-codex-plugin",
+  "license": "MIT",
+  "keywords": [
+    "tennis",
+    "sports",
+    "live-scores",
+    "odds",
+    "atp",
+    "wta"
+  ],
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Live Tennis API",
+    "shortDescription": "Live tennis scores, fixtures, odds and analysis",
+    "longDescription": "Query the Live Tennis API for in-progress matches and live scores, upcoming fixtures, player profiles and rankings, recent results, match event timelines, match-winner market prices and model win probabilities. All 12 tools are read-only. ATP, WTA and Challenger coverage.",
+    "developerName": "Live Tennis API",
+    "category": "Data & Analytics",
+    "capabilities": [
+      "Interactive"
+    ],
+    "websiteURL": "https://livetennisapi.com/",
+    "defaultPrompt": [
+      "Which tennis matches are live right now?",
+      "Show me today's upcoming ATP fixtures",
+      "What's the current score in the Alcaraz match?"
+    ],
+    "screenshots": []
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "livetennisapi",
+  "interface": {
+    "displayName": "Live Tennis API"
+  },
+  "plugins": [
+    {
+      "name": "livetennisapi",
+      "source": {
+        "source": "local",
+        "path": "./plugins/livetennisapi"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Data & Analytics"
+    }
+  ]
+}
