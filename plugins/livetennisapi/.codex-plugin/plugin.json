@@ -15,13 +15,14 @@
     "live-scores",
     "odds",
     "atp",
-    "wta"
+    "wta",
+    "itf"
   ],
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Live Tennis API",
     "shortDescription": "Live tennis scores, fixtures, odds and analysis",
-    "longDescription": "Query the Live Tennis API for in-progress matches and live scores, upcoming fixtures, player profiles and rankings, recent results, match event timelines, match-winner market prices and model win probabilities. All 12 tools are read-only. ATP, WTA and Challenger coverage.",
+    "longDescription": "Query the Live Tennis API for in-progress matches and live scores, upcoming fixtures, player profiles and rankings, recent results, match event timelines, match-winner market prices and model win probabilities. All 12 tools are read-only. ATP, WTA, Challenger and ITF coverage.",
     "developerName": "Live Tennis API",
     "category": "Data & Analytics",
     "capabilities": [
