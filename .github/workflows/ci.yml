@@ -1,0 +1,28 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Validate plugin JSON manifests
+        run: |
+          set -e
+          found=0
+          while IFS= read -r f; do
+            echo "checking $f"
+            jq -e . "$f" > /dev/null
+            found=1
+          done < <(find plugins -name '*.json' -type f)
+          [ "$found" = "1" ]
+          jq -e '.name and .version' plugins/livetennisapi/.codex-plugin/plugin.json > /dev/null
+          jq -e '.mcpServers' plugins/livetennisapi/.mcp.json > /dev/null
