@@ -26,3 +26,5 @@ jobs:
           [ "$found" = "1" ]
           jq -e '.name and .version' plugins/livetennisapi/.codex-plugin/plugin.json > /dev/null
           jq -e '.mcpServers' plugins/livetennisapi/.mcp.json > /dev/null
+      - name: Truthcheck
+        run: sh scripts/truthcheck.sh

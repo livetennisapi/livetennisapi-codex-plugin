@@ -1,12 +1,18 @@
 # Live Tennis API — Codex plugin
 
+[![ci](https://github.com/livetennisapi/livetennisapi-codex-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/livetennisapi/livetennisapi-codex-plugin/actions/workflows/ci.yml)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Live tennis scores, fixtures, players, results, odds and model analysis for
 [OpenAI Codex](https://developers.openai.com/codex/), via the hosted
-[Live Tennis API](https://livetennisapi.com/) MCP server.
+[Live Tennis API](https://livetennisapi.com/) MCP server — ATP, WTA,
+Challenger, ITF and juniors.
 
-Twelve read-only tools, ATP / WTA / Challenger coverage, no local install — the
-server is hosted at `https://mcp.livetennisapi.com/mcp` and Codex talks to it
-over streamable HTTP.
+Twelve read-only tools, no local install — the server is hosted at
+`https://mcp.livetennisapi.com/mcp` and Codex talks to it over streamable
+HTTP. (The [`livetennisapi-mcp`](https://github.com/livetennisapi/livetennisapi-mcp)
+npm package also runs locally over stdio and adds further tools — results
+archive, rankings, in-play statistics, charting; see its README.)
 
 ## Requirements
 
@@ -20,7 +26,7 @@ Both install routes read the key from the `LIVETENNISAPI_KEY` environment
 variable. The key is never written into a config file.
 
 ```bash
-export LIVETENNISAPI_KEY="your-key-here"   # add to ~/.bashrc or ~/.zshrc
+export LIVETENNISAPI_KEY="twjp_your_key_here"   # add to ~/.bashrc or ~/.zshrc
 ```
 
 `tools/list` works without a key; individual tool calls need one.
@@ -81,33 +87,38 @@ Remove with `codex mcp remove livetennisapi`.
 
 ## Tools
 
-| Tool | What it returns |
-|---|---|
-| `get_live_matches` | Matches in progress, with live scores |
-| `get_upcoming_matches` | Matches scheduled to start soon |
-| `get_match` | Full detail for one match: players, score, surface, round, status |
-| `get_match_score` | Current score for one match — lowest-latency read |
-| `get_match_events` | Event timeline: breaks, games won, sets won, momentum |
-| `get_match_odds` | Match-winner market prices and implied probability |
-| `get_match_analysis` | Model win probability and reasoning |
-| `get_fixtures` | Forward schedule, earliest first |
-| `get_recent_results` | Recently completed matches with final scores |
-| `search_players` | Search players by name |
-| `get_player` | Player profile: ranking, country, handedness, date of birth |
-| `check_api_status` | Reachability check and which plan your key is on |
+| Tool | What it returns | Plan |
+|---|---|:--:|
+| `get_live_matches` | Matches in progress, with live scores | FREE |
+| `get_upcoming_matches` | Matches scheduled to start soon | FREE |
+| `get_match` | Full detail for one match: players, score, surface, round, status | FREE |
+| `get_match_score` | Current score for one match — lowest-latency read | FREE |
+| `get_fixtures` | Forward schedule, earliest first | FREE |
+| `search_players` | Search players by name | FREE |
+| `get_player` | Player profile: ranking, country, handedness, date of birth | FREE |
+| `check_api_status` | Reachability check and which plan your key is on | FREE |
+| `get_recent_results` | Recently completed matches with final scores | BASIC |
+| `get_match_events` | Event timeline: breaks, games won, sets won, momentum | PRO |
+| `get_match_odds` | Match-winner market prices and implied probability | PRO |
+| `get_match_analysis` | Model win probability and reasoning | ULTRA |
 
-All tools are read-only.
+All tools are read-only. Tools above your plan are not errors — they return a
+plain-English note naming the plan needed. `get_recent_results` is also
+unlocked by any History plan, which works on top of a free key.
 
-## Plans
+## Plans and quotas
 
 `check_api_status` reports the plan attached to your key.
 
-| Plan | Adds |
-|---|---|
-| FREE | Live and upcoming matches, scores, players, fixtures |
-| BASIC | + historical results |
-| PRO | + match events and market prices |
-| ULTRA | + model analysis, win probability, live feed |
+| Plan | Adds | Per minute | Per day | Price |
+|---|---|---:|---:|---|
+| FREE | Live and upcoming matches, scores, players, fixtures | 30 | 100 | $0 |
+| BASIC | + recent results (also via any History plan) | 60 | 1,000 | $9.99/mo |
+| PRO | + match events and market prices | 300 | 10,000 | $29.99/mo |
+| ULTRA | + model analysis and win probability | 600 | 500,000 | $99.99/mo |
+
+On a free key (100 requests/day), poll no faster than every 15 minutes; for an
+always-on dashboard, BASIC is recommended.
 
 ## Try it
 
@@ -120,7 +131,10 @@ What are the odds on the Alcaraz match?
 ## Links
 
 - [Live Tennis API](https://livetennisapi.com/)
+- [Docs](https://docs.livetennisapi.com)
 - [Free key](https://livetennisapi.com/subscribe/free)
+- [Discord](https://discord.gg/f8WUZHgDm6)
+- [GitHub org](https://github.com/livetennisapi)
 - [MCP server source](https://github.com/livetennisapi/livetennisapi-mcp)
 
 ## License

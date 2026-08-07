@@ -1,6 +1,6 @@
 {
   "name": "livetennisapi",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Live tennis scores, fixtures, players, results, odds and model analysis from the Live Tennis API, exposed as 12 read-only MCP tools.",
   "author": {
     "name": "Live Tennis API",
@@ -16,13 +16,15 @@
     "odds",
     "atp",
     "wta",
-    "itf"
+    "challenger",
+    "itf",
+    "juniors"
   ],
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Live Tennis API",
     "shortDescription": "Live tennis scores, fixtures, odds and analysis",
-    "longDescription": "Query the Live Tennis API for in-progress matches and live scores, upcoming fixtures, player profiles and rankings, recent results, match event timelines, match-winner market prices and model win probabilities. All 12 tools are read-only. ATP, WTA, Challenger and ITF coverage.",
+    "longDescription": "Query the Live Tennis API for in-progress matches and live scores, upcoming fixtures, player profiles and rankings, recent results, match event timelines, match-winner market prices and model win probabilities. All 12 tools are read-only. ATP, WTA, Challenger, ITF and juniors coverage.",
     "developerName": "Live Tennis API",
     "category": "Data & Analytics",
     "capabilities": [
